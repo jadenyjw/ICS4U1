@@ -11,15 +11,21 @@ public class E4{
 
   public static void main (String[] args){
     Scanner input = new Scanner(System.in);
-    int num = 0;
+    int num = 1;
 
-    do{
-      System.out.println("Enter an integer > 1.");
+    while(true){
+      System.out.println("\nEnter an integer > 1.");
       num = input.nextInt();
-    }while(num <= 1);
+      if (num >= 1){
+        System.out.println("The factor(s) are:");
+        leastFactor(num);
+      }
+      else{
+        break;
+      }
 
-    System.out.println("The factor(s) are:");
-    leastFactor(num);
+    }
+
   }
 
   public static void leastFactor (int n){
