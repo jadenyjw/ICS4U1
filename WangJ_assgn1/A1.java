@@ -1,7 +1,7 @@
 /*************************************************************
 Name: Jaden Wang
 Course: ICS4U1
-Date: January 6, 2017
+Date: February 6, 2017
 Teacher: Ms. Strelkovska
 Assignment: Assignment1
 Description: A program that utilizes Scanner and JOptionPane

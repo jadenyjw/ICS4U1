@@ -1,14 +1,14 @@
 /*************************************************************
 Name: Jaden Wang
 Course: ICS4U1
-Date: January 7, 2017
+Date: February 7, 2017
 Teacher: Ms. Strelkovska
 Assignment: Question 3
 *************************************************************/
 public class E3{
 
   public static void main (String[] args){
-
+    printTriangle('j', 1);
 
   }
 
