@@ -13,7 +13,7 @@ public class E4{
     Scanner input = new Scanner(System.in);
     int num = 1;
 
-    while(true){
+    while(num >=1){
       System.out.println("\nEnter an integer > 1.");
       num = input.nextInt();
       if (num >= 1){
