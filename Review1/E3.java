@@ -9,7 +9,6 @@ public class E3{
 
   public static void main (String[] args){
     printTriangle('j', 1);
-
   }
 
   public static void printTriangle(char c, int n){
