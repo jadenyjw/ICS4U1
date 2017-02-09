@@ -14,6 +14,7 @@ public class E1{
 
   private static boolean isSquare(int n){
 
+    //Checks if the square root of the number is an Integer.
     if (Math.sqrt(n) % 1 == 0){
       return true;
     }
