@@ -35,7 +35,6 @@ public class E1{
           }
           count = "";
         }
-
       }
       //Print a new line for the next line.
       System.out.print("\n");
