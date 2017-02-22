@@ -1,3 +1,10 @@
+/*************************************************************
+Name: Jaden Wang
+Course: ICS4U1
+Date: February 21, 2017
+Teacher: Ms. Strelkovska
+Assignment: Phrase Finder
+*************************************************************/
 import java.io.*;
 
 public class TestProcessor{
