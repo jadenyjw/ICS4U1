@@ -52,10 +52,13 @@ public class TestProcessor{
       fw.close();
     }
     catch (FileNotFoundException e) {
-      System.out.println("File test.txt not found.")
+      System.out.println("File test.txt not found.");
     }
     catch (IOException e) {
-      System.out.println("Oops. Something went wrong...")
+      System.out.println("Oops. Something went wrong...");
+    }
+    catch (Exception e){
+      System.out.print(e);
     }
 
   }

@@ -72,15 +72,16 @@ public class Phrase{
         File newFile = new File("tmp");
         newFile.renameTo(old);
 
-
       }
 
 
     }
+    catch (IOException e) {
+      System.out.println("Oops. Something went wrong...");
+    }
     catch (Exception e){
       System.out.println(e);
     }
-
 
   }
 }
