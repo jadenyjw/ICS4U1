@@ -2,7 +2,7 @@ package players;
 public class GeniusPlayer extends Player{
 
   public GeniusPlayer(){
-    name = "Jaden Wang";
+    super("Patrick");
 
   }
 

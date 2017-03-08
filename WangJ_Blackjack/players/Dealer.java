@@ -2,7 +2,8 @@ package players;
 public class Dealer extends Player{
 
   public Dealer(){
-    name = "Big Brother";
+    super("Big Brother");
+
   }
 
 }
