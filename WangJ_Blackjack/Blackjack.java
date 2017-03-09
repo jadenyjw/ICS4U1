@@ -1,7 +1,7 @@
 /*************************************************************
 Name: Jaden Wang
 Course: ICS4U1
-Date: February 28, 2017
+Date: March 9, 2017
 Teacher: Ms. Strelkovska
 Assignment: Blackjack
 *************************************************************/
@@ -46,11 +46,13 @@ public class Blackjack{
     }
 
     System.out.println(human.getName() + " versus " + player.getName() + "!");
+    System.out.println(player);
 
-    //System.out.println(player);
     Deck deck = new Deck();
+    deck.shuffle();
     Dealer dealer = new Dealer();
 
+    new Game(human, player, dealer, deck);
 
 
   }
