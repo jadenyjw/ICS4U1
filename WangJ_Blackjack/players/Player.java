@@ -30,7 +30,11 @@ public class Player{
   }
 
   public int getHandValue(){
-    
+    int sum = 0;
+    for (int x = 0; x < hand.length; x++){
+      sum += CardUtils.getValue(hand[x]);
+    }
+    return sum;
   }
 
 }
