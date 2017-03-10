@@ -1,9 +1,11 @@
 
 public class Player{
 
+
   protected String name;
   protected double money;
   protected int[] hand;
+  protected double currentBet;
 
   public Player(String name){
     this.name = name;
@@ -39,12 +41,11 @@ public class Player{
 
   public boolean bet(double n){
     if(this.money - n < 0){
-      System.out.println("Not enough money.");
       return false;
     }
     else{
       this.money -= n;
-      System.out.println("You now have " + this.money);
+      this.currentBet = n;
       return true;
     }
   }

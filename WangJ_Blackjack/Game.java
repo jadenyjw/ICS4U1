@@ -14,17 +14,30 @@ public class Game{
         break;
       }
 
-
-
       if (cheatMode == true){
         System.out.println(deck);
       }
 
-      System.out.println("How much do you bet?");
+      boolean works = false;
+      do{
 
-      double money = input.nextDouble();
-      human.bet(money);
-      System.out.println("You now have " + human.getMoney());
+        try{
+          System.out.println("How much do you bet?");
+          double money = input.nextDouble();
+          if (human.bet(money)){
+            works = true;
+            System.out.println("You now have " + human.getMoney() + " dollars.");
+          }
+          else{
+            System.out.println("Not enough money.");
+          }
+        }
+        catch(Exception e){
+          System.out.println("Please enter a valid numerical bet.");
+        }
+      }while (!works);
+
+      //System.out.println("You now have " + human.getMoney());
 
       if(deck.getLastCard() <= 10){
         deck = new Deck();
@@ -35,18 +48,12 @@ public class Game{
       dealer.takeAcard(deck.drawAcard());
 
       human.takeAcard(deck.drawAcard());
-      dealer.takeAcard(deck.drawAcard());
+      human.takeAcard(deck.drawAcard());
 
       player.takeAcard(deck.drawAcard());
       player.takeAcard(deck.drawAcard());
-
-
-
-
-
 
     }
-
     System.out.println("Do you wish to play again? [y/N]");
 
     String answer = input.nextLine();
@@ -54,6 +61,8 @@ public class Game{
       new Game(human, player, dealer, deck, cheatMode);
     }
     else{
+      System.out.println("You had " + human.getMoney() + " dollars.");
+      System.out.println(player.getName() + " had " + human.getMoney() + " dollars.");
       System.out.println("Goodbye!");
     }
 
