@@ -1,4 +1,4 @@
-package players;
+
 public class GeniusPlayer extends Player{
 
   public GeniusPlayer(){

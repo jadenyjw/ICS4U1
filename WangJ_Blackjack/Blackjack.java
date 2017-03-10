@@ -8,13 +8,21 @@ Assignment: Blackjack
 
 import java.util.Random;
 
-import players.*;
+
 import java.util.*;
 import java.io.*;
 
 public class Blackjack{
 
   public static void main(String[] args){
+    boolean cheatMode = false;
+
+    //Cheating argument.
+    if (args.length == 1 && args[0].equals("cheat")){
+      cheatMode = true;
+    }
+
+    System.out.println(Rules.getRules());
 
     Random random = new Random();
     Scanner input = new Scanner(System.in);
@@ -52,7 +60,7 @@ public class Blackjack{
     deck.shuffle();
     Dealer dealer = new Dealer();
 
-    new Game(human, player, dealer, deck);
+    new Game(human, player, dealer, deck, cheatMode);
 
 
   }

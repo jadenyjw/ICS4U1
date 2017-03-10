@@ -1,5 +1,3 @@
-package players;
-
 import java.util.Random;
 
 public class AnnoyingPlayer extends Player{

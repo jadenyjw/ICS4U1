@@ -1,4 +1,4 @@
-package players;
+
 public class Player{
 
   protected String name;
@@ -37,4 +37,15 @@ public class Player{
     return sum;
   }
 
+  public boolean bet(double n){
+    if(this.money - n < 0){
+      System.out.println("Not enough money.");
+      return false;
+    }
+    else{
+      this.money -= n;
+      System.out.println("You now have " + this.money);
+      return true;
+    }
+  }
 }

@@ -23,8 +23,12 @@ public class Deck{
     }
   }
 
-  public int drawAcard(int n){
+  public int drawAcard(){
     return cards[lastCard--];
+  }
+
+  public int getLastCard(){
+    return lastCard;
   }
 
 
