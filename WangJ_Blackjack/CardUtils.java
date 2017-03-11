@@ -21,7 +21,7 @@ public class CardUtils{
     }
 
     switch(n%13){
-      
+
     case 0:
       card = "A";
       break;
@@ -43,7 +43,7 @@ public class CardUtils{
 
   static int getValue(int n){
 
-    if(n % 13 >= 10 &&  n % 13 <= 13){
+    if((n % 13 >= 10 &&  n % 13 <= 13) || n % 13 == 0){
       return 10;
     }
     else{

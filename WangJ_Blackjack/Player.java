@@ -31,16 +31,32 @@ public class Player{
     return this.money;
   }
 
+  public void showCards(){
+    
+  }
+
   public int getHandValue(){
     int sum = 0;
+    int aceCount = 0;
     for (int x = 0; x < hand.length; x++){
       sum += CardUtils.getValue(hand[x]);
+      if (hand[x] % 13 == 0){
+        aceCount++;
+      }
+    }
+    if (sum > 21){
+      for(int x = 0; x < aceCount; x++){
+        sum -= 10;
+        if(sum <= 21){
+          break;
+        }
+      }
     }
     return sum;
   }
 
   public boolean bet(double n){
-    if(this.money - n < 0){
+    if(this.money - n < 0 || n < 0){
       return false;
     }
     else{
@@ -48,5 +64,9 @@ public class Player{
       this.currentBet = n;
       return true;
     }
+  }
+
+  public double getCurrentBet(){
+    return this.currentBet;
   }
 }
