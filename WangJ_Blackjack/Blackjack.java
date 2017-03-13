@@ -42,7 +42,7 @@ public class Blackjack{
     }
     else if(n >= 1 && n <= 20){
       player = new GeniusPlayer();
-      System.out.println("You are facing a card counter.");
+      System.out.println("You are facing a Blackjack veteran.");
     }
     else if(n >= 21 && n <= 50){
       player = new AnnoyingPlayer();
@@ -54,12 +54,11 @@ public class Blackjack{
     }
 
     System.out.println(human.getName() + " versus " + player.getName() + "!");
-    System.out.println(player);
 
     Deck deck = new Deck();
     deck.shuffle();
     Dealer dealer = new Dealer();
-
+    System.out.println("The dealer's name is " + dealer.getName() + ".");
     new Game(human, player, dealer, deck, cheatMode);
 
 

@@ -31,25 +31,22 @@ public class Deck{
     return lastCard;
   }
 
+  public int getNextCard(){
+    return cards[lastCard];
+  }
+
 
   public String toString(){
     String cardSymbols = "";
     String values = "";
 
-
     for(int x = 0; x < lastCard; x++){
-
       cardSymbols += CardUtils.cardToString(cards[x]) + " ";
       values += CardUtils.getValue(cards[x]) + " ";
     }
 
     return cardSymbols + "\n" + values;
 
-
   }
-
-
-
-
 
 }

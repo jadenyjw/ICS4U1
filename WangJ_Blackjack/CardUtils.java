@@ -35,7 +35,7 @@ public class CardUtils{
       card = "K";
       break;
     default:
-      card = n%13 + "";
+      card = n%13 + 1 + "";
     }
 
     return (suite + "" + card);
@@ -43,8 +43,11 @@ public class CardUtils{
 
   static int getValue(int n){
 
-    if((n % 13 >= 10 &&  n % 13 <= 13) || n % 13 == 0){
+    if((n % 13 >= 10 &&  n % 13 <= 13)){
       return 10;
+    }
+    else if (n % 13 == 0){
+      return 11;
     }
     else{
       return n % 13 + 1;

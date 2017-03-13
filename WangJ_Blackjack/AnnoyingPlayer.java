@@ -8,7 +8,7 @@ public class AnnoyingPlayer extends Player{
 
   private String generateName(){
     Random random = new Random();
-    int n = random.nextInt(50);
+    int n = random.nextInt(30);
     String name = "";
     for(int x = 0; x < n; x++){
       name += (char)(random.nextInt(57) + 65);
@@ -17,4 +17,14 @@ public class AnnoyingPlayer extends Player{
     return name;
   }
 
+  public boolean hit(int nextCard){
+    System.out.println(this.name + " says " + this.name + "!");
+    if(super.hit(nextCard)){
+      return true;
+    }
+    else{
+      return false;
+    }
+
+  }
 }
