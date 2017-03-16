@@ -5,7 +5,7 @@ public class GeniusPlayer extends Player{
     super("Patrick");
 
   }
-
+  //Hits by knowing the next card in the deck.
   public boolean hit(int nextCard){
     int number = 0;
     if (nextCard % 13 == 0){

@@ -5,9 +5,7 @@ Date: March 9, 2017
 Teacher: Ms. Strelkovska
 Assignment: Blackjack
 *************************************************************/
-
 import java.util.Random;
-
 
 import java.util.*;
 import java.io.*;

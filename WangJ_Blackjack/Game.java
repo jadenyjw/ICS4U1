@@ -9,6 +9,10 @@ public class Game{
     System.out.println("Your money: " + human.getMoney() + "\n");
     System.out.println(player.getName()+ "'s money: " + player.getMoney() + "\n");
 
+    if (cheatMode){
+      System.out.println(deck);
+    }
+
     //Get players to draw cards.
 
     dealer.takeAcard(deck.drawAcard());
@@ -27,7 +31,11 @@ public class Game{
 
     System.out.println("You have the cards: " + human.showCards() + ".");
     System.out.println("This is a value of " + human.getHandValue() + ".\n");
-    System.out.println("Dealer's cards: " + dealer.showFirstCard() + " ?.");
+    System.out.println("Dealer's cards: " + dealer.showFirstCard() + " ?.\n");
+
+    if (cheatMode){
+      System.out.println(deck);
+    }
 
     //Ask the user how much they want to bet.
     while(true){
@@ -56,7 +64,7 @@ public class Game{
     while(!humanStandOrBusted){
 
       //Prints the deck if deck viewing is on.
-      if (cheatMode == true){
+      if (cheatMode){
         System.out.println(deck);
       }
       //Creates a new deck if required.
