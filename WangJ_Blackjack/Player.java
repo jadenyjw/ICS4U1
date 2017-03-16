@@ -33,10 +33,11 @@ public class Player{
     return this.money;
   }
   public void clearHand(){
-    hand = new int[11];
-    handSize = 0;
+    this.hand = new int[11];
+    this.handSize = 0;
   }
 
+  //Shows the cards.
   public String showCards(){
     String actualCards = "";
 
@@ -46,7 +47,7 @@ public class Player{
     return actualCards;
   }
 
-
+  //Gets the values, accounting for variable Ace values.
   public int getHandValue(){
     int sum = 0;
     int aceCount = 0;
@@ -67,6 +68,7 @@ public class Player{
     return sum;
   }
 
+  //Checks if betting is legal.
   public boolean bet(double n){
     if(this.money - n < 0 || n < 0){
       return false;
@@ -90,6 +92,7 @@ public class Player{
     return this.victory;
   }
 
+  //The simple hit rule. If hand is <= 17, hit, else, don't hit.
   public boolean hit(int nextCard){
     if(this.getHandValue() <= 17){
       return true;

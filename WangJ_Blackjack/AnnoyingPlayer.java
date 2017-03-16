@@ -6,6 +6,7 @@ public class AnnoyingPlayer extends Player{
     this.name = generateName();
   }
 
+  //Generates a random name for this player.
   private String generateName(){
     Random random = new Random();
     int n = random.nextInt(30);
@@ -17,6 +18,7 @@ public class AnnoyingPlayer extends Player{
     return name;
   }
 
+  //Does the same as Player class, except says his own name.
   public boolean hit(int nextCard){
     System.out.println(this.name + " says " + this.name + "!");
     if(super.hit(nextCard)){

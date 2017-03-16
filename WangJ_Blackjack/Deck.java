@@ -35,7 +35,7 @@ public class Deck{
     return cards[lastCard];
   }
 
-
+  //Gets string representation of the deck.
   public String toString(){
     String cardSymbols = "";
     String values = "";
@@ -45,7 +45,7 @@ public class Deck{
       values += CardUtils.getValue(cards[x]) + " ";
     }
 
-    return cardSymbols + "\n" + values;
+    return cardSymbols + "\n" + values + "\n";
 
   }
 

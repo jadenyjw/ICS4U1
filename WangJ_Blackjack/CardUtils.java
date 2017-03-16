@@ -1,5 +1,6 @@
 public class CardUtils{
 
+  //Represents an integer as a card.
   static String cardToString(int n){
 
     char suite = 'x';
@@ -41,6 +42,7 @@ public class CardUtils{
     return (suite + "" + card);
   }
 
+  //Gets the value of an integer as a card. Aces default to 11.
   static int getValue(int n){
 
     if((n % 13 >= 10 &&  n % 13 <= 13)){
