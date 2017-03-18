@@ -10,6 +10,7 @@ public class Game{
     System.out.println(player.getName()+ "'s money: " + player.getMoney() + "\n");
 
     if (cheatMode){
+      System.out.println("Cheat mode is on. Printing deck and its values:");
       System.out.println(deck);
     }
 
@@ -34,6 +35,7 @@ public class Game{
     System.out.println("Dealer's cards: " + dealer.showFirstCard() + " ?.\n");
 
     if (cheatMode){
+      System.out.println("Cheat mode is on. Printing deck and its values:");
       System.out.println(deck);
     }
 
@@ -65,6 +67,7 @@ public class Game{
 
       //Prints the deck if deck viewing is on.
       if (cheatMode){
+        System.out.println("Cheat mode is on. Printing deck and its values:");
         System.out.println(deck);
       }
       //Creates a new deck if required.

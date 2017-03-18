@@ -40,7 +40,7 @@ public class Deck{
     String cardSymbols = "";
     String values = "";
 
-    for(int x = 0; x < lastCard; x++){
+    for(int x = 0; x <= lastCard; x++){
       cardSymbols += CardUtils.cardToString(cards[x]) + " ";
       values += CardUtils.getValue(cards[x]) + " ";
     }
