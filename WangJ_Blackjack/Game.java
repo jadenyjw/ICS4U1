@@ -230,25 +230,10 @@ public class Game{
 
     //Give these filthy casuals some pity money.
     if(human.getMoney() == 0){
-      System.out.println("You have lost all your money! The house pitys you and awards you $1.");
+      System.out.println("You have lost all your money! The house pities you and awards you $1.");
       human.setMoney(1);
     }
 
-    System.out.println("Do you wish to play again? [y/N]");
-
-    String answer = input.nextLine();
-    if(answer.length() > 0 && answer.toLowerCase().charAt(0) == 'y'){
-      player.clearHand();
-      human.clearHand();
-      dealer.clearHand();
-      //Create a new game with the same players and deck.
-      new Game(human, player, dealer, deck, cheatMode);
-    }
-    else{
-      System.out.println("You had " + human.getMoney() + " dollars.");
-      System.out.println(player.getName() + " had " + player.getMoney() + " dollars.");
-      System.out.println("Goodbye. Thank you for playing Blackjack!");
-    }
 
   }
 

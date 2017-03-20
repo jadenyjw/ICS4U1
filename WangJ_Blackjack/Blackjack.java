@@ -59,16 +59,21 @@ public class Blackjack{
     deck.shuffle();
     Dealer dealer = new Dealer();
     System.out.println("The dealer's name is " + dealer.getName() + ".\n");
-    new Game(human, player, dealer, deck, cheatMode);
+    String answer;
+    do{
+      new Game(human, player, dealer, deck, cheatMode);
+      System.out.println("Do you wish to play again? [y/N]");
+      answer = input.nextLine();
+      player.clearHand();
+      human.clearHand();
+      dealer.clearHand();
+    }while(answer.length() > 0 && answer.toLowerCase().charAt(0) == 'y');
 
+    System.out.println("You had " + human.getMoney() + " dollars.");
+    System.out.println(player.getName() + " had " + player.getMoney() + " dollars.");
+    System.out.println("Goodbye. Thank you for playing Blackjack!");
 
   }
-
-
-
-
-
-
 
 
 }
