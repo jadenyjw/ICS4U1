@@ -13,9 +13,11 @@ public class Game{
       System.out.println("Cheat mode is on. Printing deck and its values:");
       System.out.println(deck);
     }
-
+    if(deck.getLastCard() <= 10){
+      deck = new Deck();
+      deck.shuffle();
+    }
     //Get players to draw cards.
-
     dealer.takeAcard(deck.drawAcard());
     dealer.takeAcard(deck.drawAcard());
 
@@ -71,7 +73,7 @@ public class Game{
         System.out.println(deck);
       }
       //Creates a new deck if required.
-      if(deck.getLastCard() <= 10){
+      if(deck.getLastCard() <= 16){
         deck = new Deck();
         deck.shuffle();
       }
