@@ -1,12 +1,16 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.*;
-
+import java.awt.Toolkit;
+import java.awt.Dimension;
 public class Q4 extends JFrame{
 
   public Q4(){
 
-    this.setSize(500,500);
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    double height = screenSize.getHeight();
+
+    this.setSize((int)(height * 2.0/3),(int)(height * 2.0/3));
     this.setVisible(true);
     this.setDefaultCloseOperation ( WindowConstants.EXIT_ON_CLOSE );
     Q4Panel panel = new Q4Panel();
