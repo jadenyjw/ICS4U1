@@ -19,24 +19,26 @@ public class Q3 extends JFrame{
 
 class Q3Panel extends JPanel{
 
-  JPanel p1 = new JPanel();
-  JPanel p2 = new JPanel();
+
   ImageIcon image = new ImageIcon("Image.png");
   JLabel label = new JLabel("", image, JLabel.CENTER);
-
+  JPanel p1 = new JPanel(new GridLayout(6, 1));
   public Q3Panel(){
     this.setLayout(new BorderLayout());
 
-    JLabel l1 = new JLabel("Testing");
-    l1.setVerticalAlignment(JLabel.CENTER);
-    l1.setHorizontalAlignment(JLabel.CENTER);
-    p1.add(l1);
-    p2.add(new JLabel("Testing", JLabel.CENTER));
+    this.add(label, BorderLayout.SOUTH);
+    p1.add(new JPanel());
+    p1.add(new JPanel());
+    JPanel p2 = new JPanel(new FlowLayout());
+    JPanel p3 = new JPanel(new FlowLayout());
 
+    p2.add(new JButton("Test Button."));
+    p3.add(new JButton("Test Button."));
+    p1.add(p2);
+    p1.add(p3);
 
     this.add(p1, BorderLayout.EAST);
-    this.add(p2, BorderLayout.SOUTH);
-    this.add(label, BorderLayout.CENTER);
+
   }
   public void paintComponent(Graphics g){
     super.paintComponent(g);

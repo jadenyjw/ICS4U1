@@ -23,7 +23,7 @@ class Q2Panel extends JPanel{
   JPanel p1 = new JPanel(new GridLayout(10, 10));
   JPanel p2 = new JPanel(new GridLayout(10, 10));
   JPanel p3 = new JPanel(new GridLayout(10, 10));
-  JPanel text = new JPanel(new FlowLayout());
+  JPanel text = new JPanel(new BorderLayout());
 
   public Q2Panel(){
     this.setLayout(new GridLayout(2,2));
@@ -48,9 +48,11 @@ class Q2Panel extends JPanel{
         p3.add(label);
     }
 
-    text.add(new Label("Hello."));
-    
+
     this.add(p1);
+    JPanel flow = new JPanel(new FlowLayout());
+    flow.add(new JButton("Button"));
+    text.add(flow, BorderLayout.SOUTH);
     this.add(text);
     this.add(p2);
     this.add(p3);

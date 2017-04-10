@@ -8,7 +8,6 @@ Assignment: Layout Assignments
 public class Main{
   public static void main(String[] args){
 
-    //Q1 q1 = new Q1();
 
     //Q2 q2 = new Q2();
 
@@ -16,8 +15,5 @@ public class Main{
 
     Q4 q4 = new Q4();
 
-    //Q5 q3 = new Q3();
-
-    //Q6 q4 = new Q4();
   }
 }
