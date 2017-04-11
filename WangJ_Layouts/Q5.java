@@ -1,7 +1,4 @@
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Toolkit;
-import java.awt.Dimension;
+import java.awt.*;
 import javax.swing.*;
 
 
@@ -12,28 +9,36 @@ public class Q5 extends JFrame{
     double height = screenSize.getHeight();
 
     this.setSize((int)(height * 2.0/3),(int)(height * 2.0/3));
-    this.setVisible(true);
     this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE );
     Q5Panel panel = new Q5Panel();
     this.add(panel);
+    this.setVisible(true);
 
   }
 
 }
 
 class Q5Panel extends JPanel{
-  Color VIOLET = new Color( 128, 0, 128 );
-  Color INDIGO = new Color( 75, 0, 130 );
-  Color colors[] = {VIOLET, INDIGO, Color.BLUE, Color.GREEN, Color.YELLOW, Color.ORANGE, Color.RED, Color.WHITE };
 
+  ImageIcon image = new ImageIcon("Image.png");
+  JLabel label = new JLabel("", image, JLabel.CENTER);
+
+  public Q5Panel(){
+
+    this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+    this.add(Box.createRigidArea(new Dimension(10, 55)));// space at the top
+    label.setAlignmentX(Component.CENTER_ALIGNMENT);
+    this.add(label);
+    this.add(Box.createRigidArea(new Dimension(5, 15)));
+    for (int i=0; i <= 5; i++) {
+      JButton button = new JButton("Button  " + i);
+  	  button.setAlignmentX(Component.CENTER_ALIGNMENT);
+      this.add(button);
+  	  this.add(Box.createRigidArea(new Dimension(5, 15)));// space between buttons
+    }
+  }
   public void paintComponent(Graphics g){
 
-    int increment = getWidth()/32;
-
-    for(int x = 0; x < colors.length; x++){
-      g.setColor(colors[x]);
-      g.fillArc(x * increment, x * increment + getHeight()/2, getWidth() - 2 * x * increment, getHeight() - x*increment, 0, 180);
-    }
   }
 
 }

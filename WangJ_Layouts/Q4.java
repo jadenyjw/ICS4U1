@@ -39,7 +39,7 @@ class Q4Panel extends JPanel{
 
     grid.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
     for (int i =0; i<(4*4); i++){
-        final JLabel label = new JLabel("Labelgghdfgdfgdgfdgfdfgdfgdgfdgfdgfdgfdgfvc");
+        final JLabel label = new JLabel("Label");
         label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         grid.add(label);
     }

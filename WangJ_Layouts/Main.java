@@ -13,7 +13,8 @@ public class Main{
 
     //Q3 q3 = new Q3();
 
-    Q4 q4 = new Q4();
+    //Q4 q4 = new Q4();
 
+      Q5 q5 = new Q5();
   }
 }
