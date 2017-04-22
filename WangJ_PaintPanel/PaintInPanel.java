@@ -42,11 +42,10 @@ class PaintPanel extends JPanel implements ActionListener{
     timer = new Timer(5,this);
     timer.start();
     this.setLayout(new BorderLayout());
-    this.add(lines, BorderLayout.CENTER);
     buttons.draw.addActionListener(this);
     buttons.exit.addActionListener(this);
     this.add(buttons, BorderLayout.SOUTH);
-
+    this.add(lines, BorderLayout.CENTER);
   }
 
   public void actionPerformed(ActionEvent e){
@@ -68,26 +67,36 @@ class PaintPanel extends JPanel implements ActionListener{
 
 }
 
-class LinesPanel extends JPanel{
+class LinesPanel extends JPanel implements MouseMotionListener{
 
   public boolean drawing = false;
   ArrayList<Line> lines = new ArrayList<Line>();
   public LinesPanel(){
-    int height = this.getHeight();
-    int width = this.getWidth();
+    this.addMouseMotionListener(this);
     for(int x = 0; x < 50; x++){
       for(int y = 0; y < 50; y++){
         lines.add(new Line(x*20, y*20));
-
       }
     }
+  }
+
+  public void mouseDragged(MouseEvent e){
+
+  }
+
+  public void mouseMoved(MouseEvent e){
+    int mouseY = MouseInfo.getPointerInfo().getLocation().y;
+    int mouseX = MouseInfo.getPointerInfo().getLocation().x;
+    for(int x = 0; x < lines.size(); x++){
+        lines.get(x).point(mouseX, mouseY);
+    }
+    System.out.println(mouseX + " " + mouseY);
   }
 
   public void paintComponent(Graphics g){
     super.paintComponent(g);
     if(drawing){
       for(int x = 0; x < lines.size(); x++){
-        lines.get(x).rotate();
         lines.get(x).draw(g);
       }
     }
@@ -99,7 +108,8 @@ class LinesPanel extends JPanel{
 
 class Line{
 
-  int x1, x2, y1, y2, angle;
+  public int x1, x2, y1, y2;
+  double angle;
   final int length = 20;
 
   public Line(int x1, int y1){
@@ -125,6 +135,13 @@ class Line{
     }
     this.x2 = (int)(x1 + length*Math.sin(Math.toRadians(angle)));
     this.y2 = (int) (y1 + length*Math.cos(Math.toRadians(angle)));
+  }
+
+  void point(int x, int y){
+    angle = Math.atan2(y - y1, x - x1);
+    System.out.println(angle);
+    this.x2 = (int)(x1 + length*Math.sin(angle));
+    this.y2 = (int) (y1 + length*Math.cos(angle));
   }
 
 
