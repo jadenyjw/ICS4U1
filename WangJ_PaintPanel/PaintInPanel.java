@@ -21,11 +21,11 @@ public class PaintInPanel extends JFrame{
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     double height = screenSize.getHeight();
 
-    this.setSize((int)(height * 2.0/3),(int)(height * 2.0/3));
-    this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE );
+    setSize((int)(height * 2.0/3),(int)(height * 2.0/3));
+    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE );
     PaintPanel panel = new PaintPanel();
-    this.add(panel);
-    this.setVisible(true);
+    add(panel);
+    setVisible(true);
   }
   public static void main(String[] args){
     new PaintInPanel();
@@ -38,12 +38,12 @@ class PaintPanel extends JPanel implements ActionListener{
   LinesPanel lines = new LinesPanel();
   ButtonPanel buttons = new ButtonPanel();
   public PaintPanel(){
-    new Timer(10,this).start();
-    this.setLayout(new BorderLayout());
+    new Timer(1,this).start();
+    setLayout(new BorderLayout());
     buttons.draw.addActionListener(this);
     buttons.exit.addActionListener(this);
-    this.add(buttons, BorderLayout.SOUTH);
-    this.add(lines, BorderLayout.CENTER);
+    add(buttons, BorderLayout.SOUTH);
+    add(lines, BorderLayout.CENTER);
   }
 
   public void actionPerformed(ActionEvent e){
@@ -65,12 +65,15 @@ class PaintPanel extends JPanel implements ActionListener{
 
 }
 
-class LinesPanel extends JPanel implements MouseMotionListener{
+class LinesPanel extends JPanel implements MouseMotionListener, MouseListener{
 
   public boolean drawing = false;
+  public boolean rotating = true;
+
   ArrayList<Line> lines = new ArrayList<Line>();
   public LinesPanel(){
-    this.addMouseMotionListener(this);
+    addMouseMotionListener(this);
+    addMouseListener(this);
     for(int x = 0; x < 50; x++){
       for(int y = 0; y < 50; y++){
         lines.add(new Line(x*20, y*20));
@@ -79,7 +82,11 @@ class LinesPanel extends JPanel implements MouseMotionListener{
   }
 
   public void mouseDragged(MouseEvent e){
-
+    int mouseY = e.getY();
+    int mouseX = e.getX();
+    for(int x = 0; x < lines.size(); x++){
+        lines.get(x).point(mouseX, mouseY);
+    }
   }
 
   public void mouseMoved(MouseEvent e){
@@ -91,10 +98,34 @@ class LinesPanel extends JPanel implements MouseMotionListener{
 
   }
 
+  public void mouseExited(MouseEvent e){
+    rotating = true;
+  }
+
+  public void mouseEntered(MouseEvent e){
+    rotating = false;
+  }
+
+  public void mouseReleased(MouseEvent e){
+
+  }
+
+  public void mousePressed(MouseEvent e){
+
+  }
+
+  public void mouseClicked(MouseEvent e){
+
+  }
+
+
   public void paintComponent(Graphics g){
     super.paintComponent(g);
     if(drawing){
       for(int x = 0; x < lines.size(); x++){
+        if(rotating){
+          lines.get(x).rotate();
+        }
         lines.get(x).draw(g);
       }
     }
@@ -116,7 +147,7 @@ class Line{
     this.x2 = (int)(x1 + length*Math.cos(Math.toRadians(angle)));
     this.y1 = y1;
     this.y2 = (int) (y1 + length*Math.sin(Math.toRadians(angle)));
-    this.angle = random.nextInt(360);
+    angle = random.nextInt(360);
 
   }
 
@@ -149,9 +180,9 @@ class ButtonPanel extends JPanel{
   public JButton draw = new JButton("Draw");
   public JButton exit = new JButton("Exit");
   public ButtonPanel(){
-    this.setLayout(new FlowLayout());
-    this.add(draw);
-    this.add(exit);
+    setLayout(new FlowLayout());
+    add(draw);
+    add(exit);
   }
 
 }
