@@ -35,12 +35,10 @@ public class PaintInPanel extends JFrame{
 
 class PaintPanel extends JPanel implements ActionListener{
 
-  private Timer timer;
   LinesPanel lines = new LinesPanel();
   ButtonPanel buttons = new ButtonPanel();
   public PaintPanel(){
-    timer = new Timer(5,this);
-    timer.start();
+    new Timer(10,this).start();
     this.setLayout(new BorderLayout());
     buttons.draw.addActionListener(this);
     buttons.exit.addActionListener(this);
@@ -50,7 +48,7 @@ class PaintPanel extends JPanel implements ActionListener{
 
   public void actionPerformed(ActionEvent e){
 
-    if(e.getSource() == timer){
+    if(e.getSource() instanceof Timer){
       lines.repaint();
     }
 
@@ -85,12 +83,12 @@ class LinesPanel extends JPanel implements MouseMotionListener{
   }
 
   public void mouseMoved(MouseEvent e){
-    int mouseY = MouseInfo.getPointerInfo().getLocation().y;
-    int mouseX = MouseInfo.getPointerInfo().getLocation().x;
+    int mouseY = e.getY();
+    int mouseX = e.getX();
     for(int x = 0; x < lines.size(); x++){
         lines.get(x).point(mouseX, mouseY);
     }
-    System.out.println(mouseX + " " + mouseY);
+
   }
 
   public void paintComponent(Graphics g){
@@ -115,9 +113,9 @@ class Line{
   public Line(int x1, int y1){
     Random random = new Random();
     this.x1 = x1;
-    this.x2 = (int)(x1 + length*Math.sin(Math.toRadians(angle)));
+    this.x2 = (int)(x1 + length*Math.cos(Math.toRadians(angle)));
     this.y1 = y1;
-    this.y2 = (int) (y1 + length*Math.cos(Math.toRadians(angle)));
+    this.y2 = (int) (y1 + length*Math.sin(Math.toRadians(angle)));
     this.angle = random.nextInt(360);
 
   }
@@ -138,10 +136,10 @@ class Line{
   }
 
   void point(int x, int y){
-    angle = Math.atan2(y - y1, x - x1);
-    System.out.println(angle);
-    this.x2 = (int)(x1 + length*Math.sin(angle));
-    this.y2 = (int) (y1 + length*Math.cos(angle));
+    angle = Math.atan2(y1 - y, x1 - x);
+
+    this.x2 = (int)(x1 + length*Math.cos(angle));
+    this.y2 = (int) (y1 + length*Math.sin(angle));
   }
 
 
