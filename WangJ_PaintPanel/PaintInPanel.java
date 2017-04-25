@@ -111,7 +111,7 @@ class LinesPanel extends JPanel implements MouseMotionListener, MouseListener{
   }
 
   public void mousePressed(MouseEvent e){
-
+    Line.color = new Color(Line.random.nextInt(255), Line.random.nextInt(255), Line.random.nextInt(255));
   }
 
   public void mouseClicked(MouseEvent e){
@@ -138,11 +138,13 @@ class LinesPanel extends JPanel implements MouseMotionListener, MouseListener{
 class Line{
 
   public int x1, x2, y1, y2;
-  double angle;
-  final int length = 20;
+  public double angle;
+  public final int length = 20;
+  static Random random = new Random();
+  static Color color = new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255));;
 
   public Line(int x1, int y1){
-    Random random = new Random();
+
     this.x1 = x1;
     this.x2 = (int)(x1 + length*Math.cos(Math.toRadians(angle)));
     this.y1 = y1;
@@ -152,6 +154,7 @@ class Line{
   }
 
   void draw(Graphics g){
+    g.setColor(color);
     g.drawLine(x1, y1, x2, y2);
   }
 
