@@ -12,8 +12,6 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-
-
 public class PaintInPanel extends JFrame{
 
   public PaintInPanel(){
@@ -31,6 +29,7 @@ public class PaintInPanel extends JFrame{
     new PaintInPanel();
   }
 
+
 }
 
 class PaintPanel extends JPanel implements ActionListener{
@@ -38,7 +37,7 @@ class PaintPanel extends JPanel implements ActionListener{
   LinesPanel lines = new LinesPanel();
   ButtonPanel buttons = new ButtonPanel();
   public PaintPanel(){
-    new Timer(1,this).start();
+    new Timer(10,this).start();
     setLayout(new BorderLayout());
     buttons.draw.addActionListener(this);
     buttons.exit.addActionListener(this);
@@ -49,12 +48,18 @@ class PaintPanel extends JPanel implements ActionListener{
   public void actionPerformed(ActionEvent e){
 
     if(e.getSource() instanceof Timer){
+
       lines.repaint();
     }
 
     else if(e.getActionCommand().equals("Draw")){
-      lines.drawing=true;
-      lines.repaint();
+      lines.drawing = true;
+      lines.lines.clear();
+      for(int x = 0; x < this.getWidth()/20; x++){
+        for(int y = 0; y < this.getHeight()/20; y++){
+          lines.lines.add(new Line(x*20, y*20));
+        }
+      }
     }
     else if(e.getActionCommand().equals("Exit")){
       System.exit(0);
@@ -65,7 +70,7 @@ class PaintPanel extends JPanel implements ActionListener{
 
 }
 
-class LinesPanel extends JPanel implements MouseMotionListener, MouseListener{
+class LinesPanel extends JPanel implements MouseMotionListener, MouseListener, ComponentListener{
 
   public boolean drawing = false;
   public boolean rotating = true;
@@ -74,11 +79,7 @@ class LinesPanel extends JPanel implements MouseMotionListener, MouseListener{
   public LinesPanel(){
     addMouseMotionListener(this);
     addMouseListener(this);
-    for(int x = 0; x < 50; x++){
-      for(int y = 0; y < 50; y++){
-        lines.add(new Line(x*20, y*20));
-      }
-    }
+    addComponentListener(this);
   }
 
   public void mouseDragged(MouseEvent e){
@@ -118,6 +119,25 @@ class LinesPanel extends JPanel implements MouseMotionListener, MouseListener{
 
   }
 
+  public void componentResized(ComponentEvent e){
+    lines.clear();
+    for(int x = 0; x < this.getWidth()/20; x++){
+      for(int y = 0; y < this.getHeight()/20; y++){
+        lines.add(new Line(x*20, y*20));
+      }
+    }
+  }
+
+  public void componentHidden(ComponentEvent e){
+
+  }
+  public void componentShown(ComponentEvent e){
+
+  }
+
+  public void componentMoved(ComponentEvent e){
+
+  }
 
   public void paintComponent(Graphics g){
     super.paintComponent(g);
@@ -129,10 +149,7 @@ class LinesPanel extends JPanel implements MouseMotionListener, MouseListener{
         lines.get(x).draw(g);
       }
     }
-
   }
-
-
 }
 
 class Line{
