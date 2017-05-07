@@ -38,8 +38,8 @@ class SnowPanel extends JPanel implements ActionListener{
     timer.start();
     setBackground(Color.BLACK);
 
-    for(int x = 0; x < random.nextInt(10) + 2; x++){
-        snowflakes.add(new Snowflake(60, 6, random.nextInt(width), random.nextInt(height)));
+    for(int x = 0; x < random.nextInt(10) + 6; x++){
+        snowflakes.add(new Snowflake((int)(width/40.0), random.nextInt(4) + 4, random.nextInt(width), random.nextInt(height)));
     }
   }
 
@@ -59,9 +59,9 @@ class SnowPanel extends JPanel implements ActionListener{
     tree.drawTree(g, this.getHeight() / 4, this.getWidth() / 2, this.getHeight() - this.getHeight() / 4, 90);
     for(int x = 0; x < snowflakes.size(); x++){
       Snowflake snowflake = snowflakes.get(x);
-      if(snowflake.y > this.getHeight() + snowflake.len){
+      if(snowflake.y > this.getHeight() + snowflake.len || snowflake.x > this.getWidth() + snowflake.len){
         snowflakes.remove(snowflake);
-        snowflakes.add(new Snowflake(60, 6, random.nextInt(this.getWidth()), 0));
+        snowflakes.add(new Snowflake((int)(this.getWidth()/40.0), random.nextInt(4) + 4, random.nextInt(this.getWidth()), 0));
       }
       else{
          snowflake.drawFlake(g, snowflake.len, snowflake.x, snowflake.y);
@@ -75,6 +75,7 @@ class SnowPanel extends JPanel implements ActionListener{
 
 class Snowflake{
   int x, y, sticks, len, angle;
+  int changeX, changeY;
   Color colour;
   static Random random = new Random();
 
@@ -83,6 +84,8 @@ class Snowflake{
     this.y = y;
     this.sticks = sticks;
     this.len = len;
+    this.changeX = random.nextInt(5) - 2;
+    this.changeY = random.nextInt(5) + 1;
     colour = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
   }
 
@@ -100,8 +103,9 @@ class Snowflake{
   }
 
   public void moveFlake(){
-    this.y = this.y + 2;
-    this.angle = this.angle + 1;
+    this.y = this.y + this.changeY;
+    this.x = this.x + this.changeX;
+    this.angle = this.angle - this.changeX;
   }
 }
 
