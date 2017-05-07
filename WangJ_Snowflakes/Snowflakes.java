@@ -14,7 +14,7 @@ public class Snowflakes extends JFrame{
     double width = screenSize.getWidth();
     this.setSize((int)(height * 2.0/3),(int)(height * 2.0/3));
     this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE );
-    SnowPanel panel = new SnowPanel( (int)(height * 2.0/3) , (int)(width * 2.0/3));
+    SnowPanel panel = new SnowPanel();
     this.add(panel);
     this.setVisible(true);
   }
@@ -32,15 +32,11 @@ class SnowPanel extends JPanel implements ActionListener{
   Random random;
   Tree tree = new Tree();
 
-  public SnowPanel(int height, int width){
+  public SnowPanel(){
     random = new Random();
     Timer timer = new Timer(20, this);
     timer.start();
     setBackground(Color.BLACK);
-
-    for(int x = 0; x < random.nextInt(10) + 6; x++){
-        snowflakes.add(new Snowflake((int)(width/40.0), random.nextInt(4) + 4, random.nextInt(width), random.nextInt(height)));
-    }
   }
 
   public void actionPerformed(ActionEvent e){
@@ -49,7 +45,6 @@ class SnowPanel extends JPanel implements ActionListener{
       snowflake.moveFlake();
     }
     repaint();
-
   }
 
   public void paintComponent(Graphics g){
@@ -57,6 +52,11 @@ class SnowPanel extends JPanel implements ActionListener{
     g.setColor(Color.BLUE);
     tree.drawRoot(g, this.getHeight() / 4, this.getWidth() / 2, this.getHeight());
     tree.drawTree(g, this.getHeight() / 4, this.getWidth() / 2, this.getHeight() - this.getHeight() / 4, 90);
+    if(snowflakes.size() == 0){
+      for(int x = 0; x < random.nextInt(10) + 6; x++){
+          snowflakes.add(new Snowflake((int)(this.getWidth()/40.0), random.nextInt(4) + 4, random.nextInt(this.getWidth()), random.nextInt(this.getHeight())));
+      }
+    }
     for(int x = 0; x < snowflakes.size(); x++){
       Snowflake snowflake = snowflakes.get(x);
       if(snowflake.y > this.getHeight() + snowflake.len || snowflake.x > this.getWidth() + snowflake.len){
