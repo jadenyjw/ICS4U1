@@ -1,3 +1,10 @@
+/*************************************************************
+Name: Jaden Wang
+Course: ICS4U1
+Date: May 6, 2017
+Teacher: Ms. Strelkovska
+Assignment: Recursion Snowflakes
+*************************************************************/
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -52,7 +59,7 @@ class SnowPanel extends JPanel implements ActionListener{
     g.setColor(Color.BLUE);
     tree.drawRoot(g, this.getHeight() / 4, this.getWidth() / 2, this.getHeight());
     tree.drawTree(g, this.getHeight() / 4, this.getWidth() / 2, this.getHeight() - this.getHeight() / 4, 90);
-    if(snowflakes.size() == 0){
+    if(snowflakes.size() < 6){
       for(int x = 0; x < random.nextInt(10) + 6; x++){
           snowflakes.add(new Snowflake((int)(this.getWidth()/40.0), random.nextInt(4) + 4, random.nextInt(this.getWidth()), random.nextInt(this.getHeight())));
       }
@@ -98,7 +105,7 @@ class Snowflake{
       int xEnd = (int)(x + len*Math.cos(Math.toRadians((360/sticks) * i + angle)));
       int yEnd = (int) (y - len*Math.sin(Math.toRadians((360/sticks) * i + angle)));
       g.drawLine(x, y, xEnd, yEnd);
-      drawFlake(g, len/3, xEnd, yEnd);
+      drawFlake(g, (int)(len/3.0), xEnd, yEnd);
     }
   }
 
