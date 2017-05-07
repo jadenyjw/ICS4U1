@@ -113,14 +113,16 @@ class Tree{
       return;
     }
     else{
+
+      len = (int) (len * 0.7);
       int endX = (int)(x + len*Math.cos(Math.toRadians(angle + 30)));
       int endY = (int)(y - len*Math.sin(Math.toRadians(angle + 30)));
       g.drawLine(x, y, endX, endY);
-      drawTree(g, (int)(len * 0.6), endX, endY, angle + 30);
+      drawTree(g, len, endX, endY, angle + 30);
       endX = (int)(x + len*Math.cos(Math.toRadians(angle - 15)));
       endY = (int)(y - len*Math.sin(Math.toRadians(angle - 15)));
       g.drawLine(x, y, endX, endY);
-      drawTree(g, (int)(len * 0.6), endX, endY, angle - 15);
+      drawTree(g, len, endX, endY, angle - 15);
 
     }
   }
