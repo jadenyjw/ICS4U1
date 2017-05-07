@@ -41,7 +41,7 @@ class SnowPanel extends JPanel implements ActionListener{
 
   public SnowPanel(){
     random = new Random();
-    Timer timer = new Timer(20, this);
+    Timer timer = new Timer(10, this);
     timer.start();
     setBackground(Color.BLACK);
   }
@@ -66,18 +66,15 @@ class SnowPanel extends JPanel implements ActionListener{
     }
     for(int x = 0; x < snowflakes.size(); x++){
       Snowflake snowflake = snowflakes.get(x);
-      if(snowflake.y > this.getHeight() + snowflake.len || snowflake.x > this.getWidth() + snowflake.len){
+      if(snowflake.y > this.getHeight() + snowflake.len || snowflake.x > this.getWidth() + snowflake.len || snowflake.x + snowflake.len < 0){
         snowflakes.remove(snowflake);
         snowflakes.add(new Snowflake((int)(this.getWidth()/40.0), random.nextInt(4) + 4, random.nextInt(this.getWidth()), 0));
       }
       else{
          snowflake.drawFlake(g, snowflake.len, snowflake.x, snowflake.y);
       }
-
-      }
     }
-
-
+  }
 }
 
 class Snowflake{
